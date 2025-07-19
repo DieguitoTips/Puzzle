@@ -1,0 +1,44 @@
+<div style="background:#111; color:#0f0; font-family: monospace; padding: 20px; border-radius: 8px; max-width: 450px;">
+
+  <h3>ACCESO RESTRINGIDO</h3>
+  <p>Introduce la clave para continuar:</p>
+
+  <form id="claveForm">
+    <input type="text" id="claveInput" placeholder="Ingresa la clave aquí" autocomplete="off" 
+           style="width: 100%; padding: 10px; background:#222; color:#0f0; border:none; border-radius:4px; margin-bottom:10px;" />
+    <input type="submit" value="Enviar" 
+           style="background:#0f0; color:#111; font-weight:bold; padding: 10px 20px; border:none; border-radius:4px; cursor:pointer;" />
+  </form>
+
+  <div id="message" style="margin-top:15px; font-weight:bold;"></div>
+
+  <hr style="border-color:#0f0; margin:20px 0;" />
+
+  <h4>Pistas para descifrar la clave:</h4>
+  <ul>
+    <li>La clave es una palabra de 3 letras.</li>
+    <li>Los números <code>86 82 79</code> representan caracteres ASCII en decimal.</li>
+    <li>Convierte esos números a letras y luego aplica un cifrado César con desplazamiento -3.</li>
+    <li>¿Qué palabra obtienes?</li>
+  </ul>
+
+</div>
+
+<script>
+  const claveCorrecta = "SOL";
+
+  document.getElementById('claveForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const entrada = document.getElementById('claveInput').value.trim().toUpperCase();
+    const mensaje = document.getElementById('message');
+
+    if (entrada === claveCorrecta) {
+      mensaje.style.color = "#0f0";
+      mensaje.textContent = "Clave correcta. Acceso concedido. ¡Bienvenido al siguiente nivel!";
+      // Aquí puedes poner redirección o mostrar contenido oculto
+    } else {
+      mensaje.style.color = "#f00";
+      mensaje.textContent = "Clave incorrecta. Intenta de nuevo.";
+    }
+  });
+</script>
